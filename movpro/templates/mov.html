@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!--<h5 style="padding: 5px;color: #d3cccc;font-family: system-ui;text-align: center;">Malayalam Rated Movies</h5>-->
+<form action="logn" method="post">
+    {% csrf_token %}
+
+<div class="container">
+
+    <div class="row">
+
+
+      {% for msg in mov_list  %}
+<div class="col-md-4">
+    <div class="card" style="width: 21rem;margin:5px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <img class="card-img-top" src="{{msg.img.url}}" alt="Card image cap" width="100px" height="180px" >
+  <div class="card-body">
+    <h5 class="card-title">{{msg.name}} </h5>
+    <p  class="card-text">{{msg.des}} , Year :  {{msg.year}}</p>
+     <!--<a href="mov/{{msg.id}}" class="btn btn-primary">Detail 1</a>-->
+     <!--<a href="movDet/{{msg.id}}" class="btn btn-primary">Detail 2</a>-->
+     <a href="{% url 'movapp:det2' msg.id %}" class="btn btn-primary">More Details</a>
+
+  </div>
+</div>
+    </div>
+     {% endfor %}
+
+
+
+    </div>
+
+</div>
+
+  <a style="float: right;margin: 20px;" href="{% url 'movapp:add1'  %}" class="btn btn-primary">Add Movies</a>
+
+</form>
+
+{% endblock %}

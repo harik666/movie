@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+   <div class="card" style="width: 50%;margin: 5px;box-shadow: 0 2px 4px 0 rgb(225 205 205 / 20%), 0 3px 5px 0 rgb(225 200 200 / 19%);
+    padding: 20px;">
+
+<h3>Confirm Delete Movie - {{movie.name}}</h3>
+<form  method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input class="btn btn-danger" type="submit" name="Delete">
+
+</form>
+  </div>
+{% endblock %}
